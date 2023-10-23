@@ -63,7 +63,7 @@ const createPlayer = (name, mark) => {
 // 2) no win = player makes next move
 // 3) if tie = display tie message
 // playAgain - defines acitions for playing game again without inputing new player names
-// newGame - reloads the window to restart again with player name input
+// newGame - reloads the windoßw to restart again with player name input
 // Why use it?
 const Game = (() => {
   let players = [];
