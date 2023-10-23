@@ -10,8 +10,8 @@ const displayController = (() => {
   };
 })();
 
-// What is it? An IIFE module that contains functions relavent to the game.
-// render - Adds squares to the div gameboard
+// What is it? An IIFE module that contains functions relavent to the gameboard.
+// render - creates displays the board
 // update - Updates the specific gameboard square with the current players mark
 // getGameboard - Allows access to the gameboards data without directly exposing or modifying the createGameBoard array outside of the module
 // Why use it? It means we can access the use of render, update and getGameboard outside of the module
@@ -33,6 +33,7 @@ const Gameboard = (() => {
       gameboardParentDiv.appendChild(squareDiv);
     });
   };
+
   const update = (index, mark) => {
     createGameBoard[index] = mark;
     render();
@@ -55,6 +56,15 @@ const createPlayer = (name, mark) => {
   };
 };
 
+// What is it? an IIFE Module that contains the functions relevant to running the game
+// start - defines actions for game start
+// handleclick - Every time there is a click it checks for:
+// 1) win = display win message
+// 2) no win = player makes next move
+// 3) if tie = display tie message
+// playAgain - defines acitions for playing game again without inputing new player names
+// newGame - reloads the window to restart again with player name input
+// Why use it?
 const Game = (() => {
   let players = [];
   let currentPlayerIndex = 0;
@@ -69,6 +79,7 @@ const Game = (() => {
     gameOver = false;
     Gameboard.render();
   };
+
   const handleClick = (event) => {
     if (gameOver) {
       return;
@@ -91,7 +102,8 @@ const Game = (() => {
     }
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   };
-  const restart = () => {
+
+  const playAgain = () => {
     for (let i = 0; i < 9; i++) {
       Gameboard.update(i, "");
     }
@@ -100,12 +112,14 @@ const Game = (() => {
     gameOver = false;
     document.querySelector("#message").innerHTML = "";
   };
+
   const newGame = () => {
     window.location.reload();
   };
+
   return {
     start,
-    restart,
+    playAgain,
     newGame,
     handleClick,
   };
@@ -142,7 +156,7 @@ function checkForTie(board) {
 // Eventlisteners fot the three buttons
 const restartButton = document.querySelector("#restart-button");
 restartButton.addEventListener("click", () => {
-  Game.restart();
+  Game.playAgain();
 });
 
 const startButton = document.querySelector("#start-button");
