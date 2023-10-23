@@ -1,35 +1,63 @@
 :root{
     --offBlack: #333;
+    --white: #ffffff; 
+    color: var(--white);
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
 }
+    
 
 body {
     background-color: var(--offBlack);
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    color: red;
-}
-#gameboard {
+.gameboard {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 400px;
     height: 300px;
+    margin: 0;
+
 }
 
 .square {
     display: flex;
     flex-wrap: wrap;
     float: left;
-    border: 1px solid white;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    height: 30%;
+    width: 33%;
+    height: 33%;
     text-align: center;
     font-size: 80px;
+    margin: none;
+    padding: none;
 }
-#controls, #message {
+div#square-0, div#square-3, div#square-1, div#square-4{
+border-right: 1px solid var(--white);
+border-bottom: 1px solid var(--white);
+}
+div#square-5 {
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+    }
+div#square-7{
+    border-left: 1px solid var(--white);
+    border-right: 1px solid var(--white);
+
+}
+
+button, input {
+font-size: 25px;
+border-radius: 5px;
+padding: 8px;
+}
+
+.controls, .message {
     text-align: center;
     margin: 20px;
 }

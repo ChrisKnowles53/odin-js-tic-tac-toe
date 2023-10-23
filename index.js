@@ -83,7 +83,7 @@ const Game = (() => {
     }
     Gameboard.render();
     gameOver = false;
-    document.querySelector("#message").innerHTML = ";";
+    document.querySelector("#message").innerHTML = "";
   };
   return {
     start,
