@@ -1,15 +1,23 @@
 :root{
     --offBlack: #333;
-    --white: #ffffff; 
+    --white: #ffffff;
+    --yellow: #d9a405;
+    --blue: #007bff;
+    --green: #01b101;
     color: var(--white);
     font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
 }
     
-
 body {
     background-color: var(--offBlack);
+}
+
+.container{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -20,7 +28,7 @@ body {
     align-items: center;
     width: 400px;
     height: 300px;
-    margin: 0;
+    margin: 90px;
 
 }
 
@@ -37,28 +45,40 @@ body {
     margin: none;
     padding: none;
 }
-div#square-0, div#square-3, div#square-1, div#square-4{
+
+div#square-1, div#square-4, div#square-7 {
 border-right: 1px solid var(--white);
-border-bottom: 1px solid var(--white);
+border-left: 1px solid var(--white);
 }
-div#square-5 {
+
+div#square-3, div#square-4, div#square-5 {
     border-top: 1px solid var(--white);
     border-bottom: 1px solid var(--white);
-    }
-div#square-7{
-    border-left: 1px solid var(--white);
-    border-right: 1px solid var(--white);
-
 }
 
 button, input {
 font-size: 25px;
-border-radius: 5px;
+border-radius: 10px;
 padding: 8px;
 }
 
 .controls, .message {
     text-align: center;
     margin: 20px;
+    font-size: 50px;
 }
 
+.start-button {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.restart-button {
+    background-color: var(--yellow);
+    color: var(--white);
+}
+
+.new-game-button {
+    background-color: var(--blue);
+    color: var(--white);
+}
