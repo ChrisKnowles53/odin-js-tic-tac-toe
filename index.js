@@ -13,8 +13,8 @@ const displayController = (() => {
 // What is it? An IIFE module that contains functions relavent to the gameboard.
 // render - creates displays the board
 // update - Updates the specific gameboard square with the current players mark
-// getGameboard - Allows access to the gameboards data without directly exposing or modifying the createGameBoard array outside of the module
-// Why use it? It means we can access the use of render, update and getGameboard outside of the module
+// getGameboard - Allows access to the gameboards data
+// Why use it? It means we can access the use of render, update and getGameboard outside of the module but without directly exposing or modifying the functions outside of the module
 
 const Gameboard = (() => {
   let createGameBoard = ["", "", "", "", "", "", "", "", ""];
@@ -58,10 +58,10 @@ const createPlayer = (name, mark) => {
 
 // What is it? an IIFE Module that contains the functions relevant to running the game
 // start - defines actions for game start
-// handleclick - Every time there is a click it checks for: 1) win = display win message  2) no win = player makes next move 3)if tie = display tie message
+// handleClick - Every time there is a click it checks for: 1) win = display win message  2) no win = player makes next move 3)if tie = display tie message
 // playAgain - defines acitions for playing game again without inputing new player names
 // newGame - reloads the window to restart again with player name input
-// Why use it?
+// Why use it? It means we can access the use of start, handleClick, playAgain and newGame outside of the module but without directly exposing or modifying the functions outside of the module
 const Game = (() => {
   let players = [];
   let currentPlayerIndex = 0;
@@ -138,7 +138,7 @@ function checkForWin(board) {
     const [a, b, c] = winningCombinations[i];
     // deconstructs the line [a,b,c] into indiviual variables ready for comparison
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      // if the first position is empty do nothing if the first position has a value (X or O) then continue to check if position b has a value that matches a and then check position c.
+      // if the board[a] is empty return false if board[a] has a value (X or O) then continue to check if position 'b' has a value that matches 'a' if true then check position 'c' if false return false.
       return true;
     }
   }
@@ -150,7 +150,7 @@ function checkForTie(board) {
   return board.every((cell) => cell !== "");
 }
 
-// Eventlisteners fot the three buttons
+// Eventlisteners for the three buttons
 const restartButton = document.querySelector("#restart-button");
 restartButton.addEventListener("click", () => {
   Game.playAgain();
